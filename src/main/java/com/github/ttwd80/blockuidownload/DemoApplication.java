@@ -33,7 +33,6 @@ public class DemoApplication {
 		response.setContentType("application/x-download");
 		response.setHeader("Content-disposition", "attachment; filename=xoxo.txt");
 		response.setHeader("Set-Cookie", "status-index-html-done=done");
-		response.getWriter().println("xoxo");
 	}
 
 }
