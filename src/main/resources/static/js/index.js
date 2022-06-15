@@ -1,9 +1,15 @@
+function getContextPath() {
+    return "/" + document.location.toString().split("/")[3];
+}
+function setDownloadStatusCookie(value) {
+    document.cookie = "status-index-html-done="+value+"; SameSite=Strict; Path=" + getContextPath();
+}
 $(document).ready(function () {
-  Cookies.set("status-index-html-done", "none");
+  setDownloadStatusCookie("none");
 });
 
 function block() {
-  Cookies.set("status-index-html-done", "submit");
+  setDownloadStatusCookie("submit");
   start_poll();
 }
 
@@ -12,12 +18,12 @@ function start_poll() {
   var key = "status-index-html-done";
   if (Cookies.get(key) == "submit") {
     $.blockUI({ message: "<h1>Just a moment...</h1>" });
-    Cookies.set(key, "process");
+    setDownloadStatusCookie("process");
     setTimeout(start_poll, timeout);
   } else if (Cookies.get(key) == "process") {
     setTimeout(start_poll, timeout);
   } else if (Cookies.get(key) == "done") {
-    Cookies.set(key, "none");
+    setDownloadStatusCookie("none");
     $.unblockUI();
   }
 }

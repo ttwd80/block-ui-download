@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <title>Sample form</title>
-    <script src="/webjars/jquery/jquery.js"></script>
-    <script src="/webjars/jquery-blockui/jquery.blockUI.js"></script>
-    <script src="/js/js.cookie.js"></script>
-    <script src="/js/index.js"></script>    
+    <script src="/webjars/jquery/jquery.js" th:src="@{/webjars/jquery/jquery.js}"></script>
+    <script src="/webjars/jquery-blockui/jquery.blockUI.js" th:src="@{/webjars/jquery-blockui/jquery.blockUI.js}"></script>
+    <script src="/js/js.cookie.js" th:src="@{/js/js.cookie.js}"></script>
+    <script src="/js/index.js" th:src="@{/js/index.js}"></script>
   </head>
   <body>
     <h2>Sample form</h2>
     <!-- page content -->
     <div>
-      <form action="/do-post" method="post">
+      <form th:action="@{/do-post}" action="/do-post" method="post">
         <div>
           <input type="hidden" name="key" value="100" />
         </div>
