@@ -17,7 +17,7 @@ function start_poll() {
   } else if (Cookies.get(key) == "process") {
     setTimeout(start_poll, timeout);
   } else if (Cookies.get(key) == "done") {
-    Cookies.set("status-index-html-done", "none");
+    Cookies.set(key, "none");
     $.unblockUI();
   }
 }
