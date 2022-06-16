@@ -1,8 +1,17 @@
-function getContextPath() {
-    return "/" + document.location.toString().split("/")[3];
+function getCorrectCookiePath() {
+  return "/" + document.location.toString().split("/")[3];
+}
+function getCorrectCookieString(value) {
+  var key = "status-index-html-done";
+  var cookie = key + "=" + value;
+  cookie = cookie + "; ";
+  cookie = cookie + "SameSite=Strict";
+  cookie = cookie + "; ";
+  cookie = cookie + "Path=" + getCorrectCookiePath();
+  return cookie;
 }
 function setDownloadStatusCookie(value) {
-    document.cookie = "status-index-html-done="+value+"; SameSite=Strict; Path=" + getContextPath();
+  document.cookie = getCorrectCookieString(value);
 }
 $(document).ready(function () {
   setDownloadStatusCookie("none");
